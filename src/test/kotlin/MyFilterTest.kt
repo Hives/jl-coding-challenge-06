@@ -40,4 +40,22 @@ internal class MyFilterKtTest {
         val list = listOf(1, 2, 3, 4, 5, 6, 7, 8, 45, 46, 47, 48)
         assertEquals(listOf(2, 4, 6, 8, 46, 48), applyFilter(list, isEven))
     }
+
+    @Test
+    fun `a list of strings`() {
+        val list = listOf("red", "orange", "yellow", "green", "blue", "indigo", "violet")
+        val moreThanFourLetters = { s: String -> s.length > 4 }
+        assertEquals(listOf("orange", "yellow", "green", "indigo", "violet"), applyFilter(list, moreThanFourLetters))
+    }
+
+    @Test
+    fun `a list of lists`() {
+        val list = listOf(
+            listOf(1, 2, 3),
+            listOf(1, 2, 3, 4, 5),
+            listOf(1, 2, 3, 4, 5, 6, 7)
+        )
+        val lengthEqualsFive = { l: List<Int> -> l.size == 5 }
+        assertEquals(listOf(listOf(1, 2, 3, 4, 5)), applyFilter(list, lengthEqualsFive))
+    }
 }
