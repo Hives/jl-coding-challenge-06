@@ -1,14 +1,12 @@
-fun <T> applyFilter(list: List<T>, filter: (T) -> Boolean): List<T> {
-    if (list.size == 0) return list
+fun <T> List<T>.myFilter(predicate: (T) -> Boolean): List<T> {
+    if (this.size == 0) return this
 
-    if (list.size == 1) {
-        val x = list.single()
-
-        return if (filter(x)) list else emptyList()
+    if (this.size == 1) {
+        val x = this.single()
+        return if (predicate(x)) this else emptyList()
     } else {
-        val startOfList = list.slice(0..list.size - 2)
-        val endOfList = listOf(list.last())
-
-        return applyFilter(startOfList, filter) + applyFilter(endOfList, filter)
+        val startOfList = this.slice(0..this.size - 2)
+        val endOfList = listOf(this.last())
+        return startOfList.myFilter(predicate) + endOfList.myFilter(predicate)
     }
 }
