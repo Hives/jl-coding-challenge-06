@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class MyFilterKtTest {
+internal class MyFilterTest {
     val emptyIntList: List<Int> = emptyList()
     val lessThanFive = { x: Int -> x < 5 }
     val isEven = { x: Int -> x % 2 == 0 }
