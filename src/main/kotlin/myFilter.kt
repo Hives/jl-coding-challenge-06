@@ -12,5 +12,5 @@ fun <T> List<T>.myFilter(predicate: (T) -> Boolean): List<T> {
 }
 
 fun numberIsEvenAndLessThan(aNumber: Int): (Int) -> Boolean {
-    return { n: Int -> n % 2 == 0 && n < aNumber}
+    return { n: Int -> n % 2 == 0 && n < aNumber }
 }
