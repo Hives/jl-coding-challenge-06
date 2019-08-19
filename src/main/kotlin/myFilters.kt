@@ -5,9 +5,13 @@ fun <T> List<T>.myRecursiveFilter(predicate: (T) -> Boolean): List<T> {
         val x = this.single()
         return if (predicate(x)) this else emptyList()
     } else {
-        val startOfList = this.slice(0..this.size - 2)
-        val endOfList = listOf(this.last())
-        return startOfList.myRecursiveFilter(predicate) + endOfList.myRecursiveFilter(predicate)
+        val theLast = this.last()
+        val theRest = this.slice(0..this.size - 2)
+        return if (predicate(theLast)) {
+            theRest.myRecursiveFilter(predicate) + theLast
+        } else {
+            theRest.myRecursiveFilter(predicate)
+        }
     }
 }
 
